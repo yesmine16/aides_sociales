@@ -1,0 +1,60 @@
+<html dir="rtl" lang="ar">
+    <head><link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.dataTables.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">   
+        <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+        <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet"> 
+        </head>
+    <body>
+        <div>
+           
+       
+    <div class="css container-fluid" >
+
+
+        <div id="htmlData" >
+           
+            <table  dir="rtl" class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions" id="example">
+         <thead class="thead_dark">
+             <tr>         <th>#</th>
+ 
+                 <th class="th_text"> الاسم </th>
+                 <th class="th_text">اللقب</th>
+                 <th class="th_text">رقم الهاتف</th>
+                 <th class="th_text">تـــــــــــــاريخ الولادة</th>
+                 <th class="th_text">رقم بطاقة تعريف وطنية</th>
+                 <th class="th_text">الشهادةالعلمية</th>
+                 <th class="th_text">العنوان الشخـــــصي</th>
+                 <th class="th_text">الحــــــــــــالة المدنية</th>
+                 <th class="th_text">الحــــــــــالة الصحية</th>
+                 <th class="th_text">عدد الاطفال في الكفالة</th>
+                 <th class="th_text">أشقاء أو أقارب في الكفالة</th>
+                 <th class="th_text">المداخيل القــــــارة </th>
+                 <th class="th_text">التغطية الاجتماعية</th>
+                 <th class="th_text">وجه استغلال المسكن</th>
+                 <th class="th_text">تصنيف الحالة الاجتماعية </th>
+
+
+                 
+             </tr>
+         </thead>
+         <tbody>
+             <tr *ngFor = "let tab of formm" >s
+                 <td> {{ tab.id }} </td>
+                 <td> {{ tab.nom}} </td>
+                 <td> {{ tab.prenom}} </td>
+                 <td> {{ tab.phone}} </td>
+                 <td> {{ tab.address}} </td>
+ 
+ 
+                 
+             </tr>
+         </tbody>
+     </table>
+    </div>
+      
+        </div></div>
+        
+       </body>
+
+</html>

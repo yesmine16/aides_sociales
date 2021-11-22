@@ -1,0 +1,257 @@
+<html dir="rtl" lang="ar">
+   <form #f="ngForm"  [formGroup]="form1" class="css" *ngIf="!valid"
+   name="form"
+   (ngSubmit)="submitForm()">
+
+      <div class="container">
+         <div style="float: left;">
+            <h3> لجنة الشؤون الاجتماعية </h3>
+            <label for="date">التاريخ : </label>
+            <input [ngModelOptions]="{standalone: true}" [(ngModel)] = "formm.date" id="date" type="date" class="form-control w-75" #date="ngModel" [ngClass]="{ 'is-invalid': f.submitted && date.invalid }"  required>
+            <div class="invalid-feedback" *ngIf="f.submitted && date.invalid">
+             </div>
+        </div>
+        
+        <div class="form-group" style="float: right;"><h3 for="avatar">صورة شمسية</h3>
+         <div class="container">
+            <div class="picture-container">
+                <div class="picture">
+                    <img [src]="avatar" class="picture-src"  title="">
+                    <input type="file" accept="image/*" (change)="selectFile($event)" [ngModelOptions]="{standalone: true}" [(ngModel)] = "formm.img">
+                  </div>
+        
+            </div>
+        </div>
+       </div>
+       
+        
+       <br><br><br><br><br>
+<div *ngFor = "let tab of tab;let last = last;">
+   <h2 *ngIf="last" style="text-align: center;"> بطاقة ارشــــــــادات عدد  {{tab.id+1}}</h2>
+
+</div>
+<br><br>
+    <div class="form-group">
+       <label for="prenom" class="form-label">الاســـــــم </label>
+       <input [ngModelOptions]="{standalone: true}" type="text" class="form-control " [(ngModel)] = "formm.prenom" #nom="ngModel" [ngClass]="{ 'is-invalid': f.submitted && nom.invalid }" required>
+      
+       <label for="nom" class="form-label">اللقب</label>
+       <input [ngModelOptions]="{standalone: true}" type="text" class="form-control " #prenom="ngModel" [(ngModel)] = "formm.nom" [ngClass]="{ 'is-invalid': f.submitted && prenom.invalid }" required>
+    
+    </div><br>
+    <div class="form-group">
+        <label class="form-label" for="datenaiss">تـــــــــــــاريخ الولادة</label>
+        <input  [ngModelOptions]="{standalone: true}" id="datenaiss" type="date" #datenaiss="ngModel" class="form-control w-25" [(ngModel)] = "formm.datenaiss" [ngClass]="{ 'is-invalid': f.submitted && datenaiss.invalid }" required>
+     </div>
+     <br>
+     <div class="form-group">
+      <label class="form-label">رقم بطاقة تعريف وطنية </label>
+      <input  type="number" class="form-control" [(ngModel)] = "formm.cin" [ngModelOptions]="{standalone: true}" #cin="ngModel" [ngClass]="{ 'is-invalid': f.submitted && cin.invalid }"  required>
+     </div>
+    
+     <div class="form-group">
+      <label class="form-label">الشهادةالعلمية</label>
+      <input  type="text" class="form-control " #diplome="ngModel" [ngModelOptions]="{standalone: true}" [(ngModel)] = "formm.diplome" [ngClass]="{ 'is-invalid': f.submitted && diplome.invalid }" required>
+     </div>
+     <div class="invalid-feedback" *ngIf="f.submitted && diplome.invalid">
+    </div>
+     <div class="form-group">
+      <label class="form-label">المهنة</label>
+      <input  type="text" class="form-control" [(ngModel)] = "formm.job" [ngModelOptions]="{standalone: true}" #job="ngModel" [ngClass]="{ 'is-invalid': f.submitted && job.invalid }"  required>
+     </div>
+  
+     <div class="form" >
+        <br><br>
+      <label class="form-label">العنوان الشخـــــصي </label><br>
+        <label class="col-sm col-form-label"   >رقم المنزل</label>
+      <div class="col-sm-5"> 
+       <input type="text" class="form-control"  >
+     </div><br>
+     <label class="col-sm col-form-label" >النهج </label>
+     <div class="col-sm-5">  <input type="text" class="form-control" >
+    </div><br>
+    <label class="col-sm col-form-label">المنطقة</label>
+    <div class="col-sm-5">  <input type="text" class="form-control">
+   </div><br>
+   <label class="col-sm col-form-label">الولاية</label>
+   <div class="col-sm-5">  <input type="text" class="form-control">
+  </div><br>
+   
+   
+   </div><br>
+     <div class="form-group">
+      <label class="form-label" for="phone">رقم الهاتف</label>
+      <input  [ngModelOptions]="{standalone: true}" id="phone" type="phone" class="form-control" #phone="ngModel"  [(ngModel)] = "formm.phone" [ngClass]="{ 'is-invalid': f.submitted && phone.invalid }" required pattern="[0-9]{8}"> 
+      <p class="alert alert-info b" role="alert">الرقم الذي يعتمد للاتصال بالمستفيد من المساعدة الاجتماعية في اطار برنامج مساعدة  وفي حالة التعذر يتم شطبه من البرنامج</p><br>
+   </div>
+   <div class="invalid-feedback" *ngIf="f.submitted && phone.invalid">
+    </div><br>
+   <div class="form-group">
+      <label class="form-label">الحــــــــــــالة المدنية</label><br>
+      <input [ngModelOptions]="{standalone: true}"  class="form-check-input" type="radio" id="single" name="civil" value="single" [(ngModel)] = "formm.civil" >
+      <label class="form-check-label" for="single">أعزب/عزباء</label><br>
+      <input  [ngModelOptions]="{standalone: true}" class="form-check-input" type="radio" id="married" name="civil" value="married" [(ngModel)] = "formm.civil" >
+      <label class="form-check-label" for="married">(متزوج(ة</label><br>
+      <input  [ngModelOptions]="{standalone: true}" class="form-check-input" type="radio" id="divorsed" name="civil" value="divorsed" [(ngModel)] = "formm.civil">
+      <label class="form-check-label" for="divorsed">مطلق(ة)</label><br>
+      <input  [ngModelOptions]="{standalone: true}" class="form-check-input" type="radio" id="widowed" name="civil" value="widowed" [(ngModel)] = "formm.civil">
+      <label class="form-check-label" for="widowed">(أرمل(ة</label><br><br>
+      <div *ngIf="formm.civil=='married'" class="div">
+         <label class="form-label">اسم الزوجة</label>
+         <input  type="text" class="form-control" required>
+         <label class="form-label">القب</label>
+         <input  type="text" class="form-control"required>
+         <label class="form-label"> رقم بطاقة تعريف وطنية للزوجة</label>
+         <input  type="number" class="form-control " required>
+         <label class="form-label"> الشهادةالعلمية للزوجة</label>
+         <input  type="text" class="form-control " required>
+         <label class="form-label">مهنة الزوجة</label>
+         <input  type="text" class="form-control "  required>
+
+      </div>
+   
+   
+   </div><br>
+
+      <div class="form-group">
+          <label class="form-label">الحــــــــــالة الصحية</label><br>
+          <input  [ngModelOptions]="{standalone: true}" class="form-check-input" type="radio" id="good" name="health" value="good" [(ngModel)] = "formm.health">
+          <label class="form-check-label" for="html">سليم</label><br>
+          <input  [ngModelOptions]="{standalone: true}" class="form-check-input" type="radio" id="sick" name="health" value="sick" [(ngModel)] = "formm.health"  >
+          <label class="form-check-label" for="sick">يعاني من مرض مزمن</label><br>
+          <div  *ngIf="formm.health == 'sick'">
+            <textarea placeholder="أذكر المرض" [ngModelOptions]="{standalone: true}" name="sickness" id="sickness" cols="30" rows="5" class="form-control" [(ngModel)] = "formm.sick"></textarea>
+         </div>
+          <input  [ngModelOptions]="{standalone: true}" class="form-check-input" name="health" type="radio" [(ngModel)] = "formm.health" value="handicap">
+          <label class="form-check-label" for="handicap">معاق </label><br>
+          <div  *ngIf="formm.health == 'handicap'">
+          <textarea placeholder="أذكر نوع الاعـــــاقة" [ngModelOptions]="{standalone: true}"  name="sickness" id="sickness" cols="30" rows="5" class="form-control" [(ngModel)] = "formm.handicap" ></textarea></div>
+         </div>
+<br>
+    
+  <div> 
+   <label class="form-label" for="kids">عدد الاطفال في الكفالة</label>
+   <input  [ngModelOptions]="{standalone: true}" id="kids" type="number" class="form-control" [(ngModel)] = "formm.kids" required>
+   <div *ngIf="formm.kids > 0">
+   <div *ngFor='let in of counter(formm.kids) ;let i = index' class="div">
+      <br><br>
+      <h5>الطفل رقم {{i+1}} </h5><br>
+      <label class="form-label">الاسم </label>
+      <input  type="text" class="form-control" required>
+      <label class="form-label">القب</label>
+      <input  type="text" class="form-control"required>
+      <label class="form-label" for="datenaiss">تـــــــــــــاريخ الولادة</label>
+        <input  type="date" class="form-control w-25" required>
+        <label class="form-label">الصفة</label>
+        <select class="form-select">
+         <option selected>طالب</option>
+         <option value="1">تلميذ</option>
+         <option value="2">عاطل</option>
+         <option value="3">أقل من 6 سنوات</option>
+         <option value="4">عامل يومي</option>
+         <option value="5">عمل قار</option>
+       </select>
+       <label class="form-label">الحــــــــــالة الصحية</label><br>
+       <input  [ngModelOptions]="{standalone: true}" class="form-check-input" type="radio"  name="health" value="good" [(ngModel)] = "formm.health">
+       <label class="form-check-label" for="html">سليم</label><br>
+       <input  [ngModelOptions]="{standalone: true}" class="form-check-input" type="radio"  name="health" value="sick" [(ngModel)] = "formm.health">
+       <label class="form-check-label" for="sick">يعاني من مرض مزمن</label><br>
+       <div  *ngIf="formm.health == 'sick'">
+         <textarea placeholder="أذكر المرض" [ngModelOptions]="{standalone: true}" cols="30" rows="5" class="form-control" [(ngModel)] = "formm.sick" ></textarea>
+      </div>
+       <input  [ngModelOptions]="{standalone: true}" class="form-check-input" name="health" type="radio" [(ngModel)] = "formm.health" value="handicap">
+       <label class="form-check-label" for="handicap">معاق </label><br>
+       <div  *ngIf="formm.health == 'handicap'">
+       <textarea placeholder="أذكر نوع الاعـــــاقة" [ngModelOptions]="{standalone: true}"  name="sickness" cols="30" rows="5" class="form-control" [(ngModel)] = "formm.handicap" ></textarea></div>
+      
+</div></div></div>
+<br>
+
+      <div class="form-group">   
+         <label class="form-label">الوالدين أو الأصول في الكفالة</label><br>
+      
+  <div  *ngFor="let parent of parentList" >
+   <label>
+     <input class="form-check-input" type="checkbox" [value]="parent.id" (change)="onCheckboxChange($event)" class="form-check-input"/>
+     {{parent.name}}
+   </label>
+ </div></div>
+
+   <div class="form-group">
+      <label class="form-label" for="siblings">أشقاء أو أقارب في الكفالة</label>
+      <textarea placeholder="ذكر وجه القرابة مع وصف الحالة الصحية والاجتماعية" [ngModelOptions]="{standalone: true}" name="siblings" id="siblings" cols="30" rows="5" class="form-control" [(ngModel)] = "formm.siblings" required></textarea>
+      
+   </div><br>
+
+   <div class="form-group">
+      <label class="form-label">المداخيل القــــــارة </label><br>
+      <input  [ngModelOptions]="{standalone: true}" class="form-check-input" type="radio" id="fix" name="salary" value="fix" [(ngModel)] = "formm.salary" required>
+      <label class="form-check-label" for="fix">راتب شهري</label><br>
+      <input  [ngModelOptions]="{standalone: true}" class="form-check-input" type="radio" id="old-ration" name="salary" value="ol-ration" [(ngModel)] = "formm.salary" >
+      <label class="form-check-label" for="old-ration">جراية عمرية</label><br>
+      <input  [ngModelOptions]="{standalone: true}" class="form-check-input" type="radio" id="grant" name="salary" value="grant" [(ngModel)] = "formm.salary">
+      <label class="form-check-label"  for="grant">منحة</label><br>
+      <input  [ngModelOptions]="{standalone: true}" class="form-check-input" type="radio" value="amel" name="salary"  [(ngModel)] = "formm.salary">
+      <label class="form-check-label" >عامل يومي</label><br>
+      <input  [ngModelOptions]="{standalone: true}" class="form-check-input" type="radio" value="atel" name="salary" [(ngModel)] = "formm.salary" >
+      <label class="form-check-label" >عاطل عن العمل</label><br>
+    
+
+   
+  </div><br>
+  <div class="form-group">
+      <label class="form-label">التغطية الاجتماعية</label>
+      <select class="form-select">
+         <option selected>الأسر المنتفعة بالمنح القارة للبرنامج الوطني لإعانة العائلات المعوزة</option>
+         <option value="1">الأسر المنتفعة  ببطاقات العلاج المجاني دون التمتع بالمنح القارة</option>
+         <option value="2">الأسر المنتفعة ببطاقات العلاج بالتعريفة المنخفضة</option>
+         <option value="3">الأسر التي لا تتمتع بأي تغطية صحية</option>
+         <option value="4">أصحاب المنح وجرايات التقاعد الضعيفة</option>
+       </select>
+      <p class="alert alert-info">وجوب الاستظهار بشهادة في عدم الانخراط في حالة عدم وجود تغطية اجتماعية</p>
+   </div><br>
+   <div class="form-group">
+      <label class="form-label">وجه استغلال المسكن</label><br>
+      <input  [ngModelOptions]="{standalone: true}" class="form-check-input" type="radio" id="prop" name="home" value="prop" [(ngModel)] = "formm.house" >
+      <label class="form-check-label" for="prop">ملكية فردية</label><br>
+      <input  [ngModelOptions]="{standalone: true}" class="form-check-input" type="radio" id="collective" name="home" value="collective" [(ngModel)] = "formm.house" >
+      <label class="form-check-label" for="collective">ملك مشترك</label><br>
+      <input  [ngModelOptions]="{standalone: true}" class="form-check-input" type="radio" id="rent" name="home" value="rent" [(ngModel)] = "formm.house">
+      <label class="form-check-label" for="rent">كراء</label><br>
+      <input  [ngModelOptions]="{standalone: true}" class="form-check-input" type="radio" id="donation" name="home" value="donation" [(ngModel)] = "formm.house">
+      <label class="form-check-label" for="donation">على وجه الفضل</label><br>
+      <br>
+  </div>  <br>
+ 
+  
+      <div class="form-group">
+         <label class="form-label" >تصنيف الحالة الاجتماعية </label><br>
+         <input  [ngModelOptions]="{standalone: true}" class="form-check-input" type="radio" id="fix" name="feedback" value="prior" [(ngModel)] = "formm.feedback" >
+         <label class="form-check-label" for="fix">ذات أولوية مطلقة ومتابعة مستمرة</label><br>
+         <input  [ngModelOptions]="{standalone: true}" class="form-check-input" type="radio"  name="feedback" value="priority" [(ngModel)] = "formm.feedback">
+         <label class="form-check-label" for="old-ration">ذات أولوية</label><br>
+         <input  [ngModelOptions]="{standalone: true}" class="form-check-input" type="radio" name="feedback" value="sante" [(ngModel)] = "formm.feedback" >
+         <label class="form-check-label"  for="grant"> تدخل متأكد في المجال الصحي</label><br>
+         <input  [ngModelOptions]="{standalone: true}" class="form-check-input" type="radio" value="argent" name="feedback"  [(ngModel)] = "formm.feedback">
+         <label class="form-check-label" > تدخل متأكد في المجال المالي</label><br>
+         <input  [ngModelOptions]="{standalone: true}" class="form-check-input" type="radio" value="idara" name="feedback" [(ngModel)] = "formm.feedback">
+         <label class="form-check-label" > تدخل متأكد في المجال الاداري</label><br>
+         <input  [ngModelOptions]="{standalone: true}" class="form-check-input" type="radio" value="just" name="feedback" [(ngModel)] = "formm.feedback">
+         <label class="form-check-label" > الاقتصار على المساعدة في المناسبات الدينية و الاجتماعية</label><br>
+         <input  [ngModelOptions]="{standalone: true}" class="form-check-input" type="radio" value="autre" name="feedback" [(ngModel)] = "formm.feedback" >
+         <label class="form-check-label" >تصنيف آخر</label><br>
+      <div *ngIf="formm.feedback=='autre'">
+         <textarea placeholder="اذكره" [ngModelOptions]="{standalone: true}" cols="30" rows="5" class="form-control" [(ngModel)] = "formm.autre" ></textarea>
+   </div> </div>
+   <br>
+   <br>
+   
+     <div class="d-grid gap-2 col-6 mx-auto">
+     <input type="submit" class="btn btn-primary b" value="إرسال">
+   </div>
+     <br>
+     <br>
+</div>
+
+</form> 
+</html>
